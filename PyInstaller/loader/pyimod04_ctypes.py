@@ -76,7 +76,8 @@ def install():
                 try:
                     super().__init__(name, *args, **kwargs)
                 except Exception as base_error:
-                    raise PyInstallerImportError(name) from base_error
+                    raise base_error
+#                    raise PyInstallerImportError(name) from base_error
 
         ctypes.WinDLL = PyInstallerWinDLL
         ctypes.windll = ctypes.LibraryLoader(PyInstallerWinDLL)
@@ -88,7 +89,7 @@ def install():
                     super().__init__(name, *args, **kwargs)
                 except Exception as base_error:
                     raise base_error
-#                    raise PyInstallerImportError(name) from base_error
+                    raise PyInstallerImportError(name) from base_error
 
         ctypes.OleDLL = PyInstallerOleDLL
         ctypes.oledll = ctypes.LibraryLoader(PyInstallerOleDLL)
